@@ -1,1 +1,156 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Oluwatosin Alli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-text">Loading</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html">OA</a>
+            </div>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Matrix Rain Background -->
+    <div class="hero-background">
+        <canvas id="matrix-rain"></canvas>
+        <div class="gradient-sphere"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="main-container">
+        <section class="section projects-page">
+            <h1 class="section-title">My Projects</h1>
+            
+            <div class="projects-grid detailed">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project1.jpg" alt="Project 1">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p class="project-description">A full-stack e-commerce platform with microservices architecture, featuring real-time inventory management and payment processing.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project2.jpg" alt="Project 2">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud Infrastructure Manager</h3>
+                        <p class="project-description">An automated cloud infrastructure management system with multi-cloud support and cost optimization features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project3.jpg" alt="Project 3">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-time Analytics Dashboard</h3>
+                        <p class="project-description">A scalable analytics platform processing millions of events per second with real-time visualization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Go</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Grafana</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project4.jpg" alt="Project 4">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>API Gateway Service</h3>
+                        <p class="project-description">A high-performance API gateway with rate limiting, caching, and authentication features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Live Demo</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Oluwatosin Alli. Built with 💻</p>
+    </footer>
+
+    <!-- Cursor and effects -->
+    <div class="cursor"></div>
+    <div class="ripple-container"></div>
+    <div class="pointer-effects">
+        <div class="pointer-circle"></div>
+        <div class="pointer-dot"></div>
+    </div>
+</body>
+</html> 

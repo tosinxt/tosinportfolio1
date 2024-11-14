@@ -1492,6 +1492,112 @@ window.addEventListener('load', () => {
     createAnimatedTooltips();
 });
 
+// Add the story loader functionality
+const storyStates = [
+    { text: "Born on January 20, 2002 in Nigeria" },
+    { text: "Early passion for technology" },
+    { text: "Co-founded coding club at Spring of Life Secondary School" },
+    { text: "Graduated from Spring of Life Secondary School in 2020" },
+    { text: "Joined Babcock University" },
+    { text: "Member of GDSC Backend Systems" },
+    { text: "AI and Data Science enthusiast" },
+    { text: "Marketing Manager at UN Women, Abuja" },
+    { text: "IT Manager internship at UN Women" },
+    { text: "Co-founded ALiAS Hedge Fund" },
+    { text: "Graduated from Babcock University 2024" }
+];
+
+function initStoryLoader() {
+    const loaderBtn = document.querySelector('.load-story-btn');
+    const loader = document.querySelector('.story-loader');
+    const loaderText = document.querySelector('.loader-text');
+    const progressBar = document.querySelector('.progress-bar');
+    const storyContent = document.querySelector('.story-content');
+    let currentState = 0;
+    
+    function showLoader() {
+        loader.style.display = 'flex';
+        currentState = 0;
+        loadNextState();
+    }
+    
+    function loadNextState() {
+        if (currentState >= storyStates.length) {
+            setTimeout(() => {
+                loader.style.display = 'none';
+                showStoryContent();
+            }, 1000);
+            return;
+        }
+        
+        loaderText.textContent = storyStates[currentState].text;
+        const progress = ((currentState + 1) / storyStates.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        
+        currentState++;
+        setTimeout(loadNextState, 2000);
+    }
+    
+    function showStoryContent() {
+        storyContent.innerHTML = `
+            <div class="story-timeline">
+                ${storyStates.map(state => `
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <p>${state.text}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        storyContent.classList.remove('hidden');
+        setTimeout(() => {
+            storyContent.classList.add('visible');
+        }, 100);
+    }
+    
+    loaderBtn.addEventListener('click', showLoader);
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    if (document.querySelector('.story-loader')) {
+        initStoryLoader();
+    }
+});
+
+// Add this function for 3D tilt effect
+function initTiltEffect() {
+    const cards = document.querySelectorAll('[data-tilt]');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    initTiltEffect();
+});
+
 
 
 
