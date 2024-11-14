@@ -254,7 +254,9 @@ body {
 .tech-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 0;
+    padding: 20px;
+    position: relative;
 }
 
 .tech-item {
@@ -267,10 +269,19 @@ body {
     justify-content: center;
     transition: all 0.3s ease;
     position: relative;
+    margin-left: -10px;
+    border: 2px solid rgba(100, 255, 218, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.tech-item:first-child {
+    margin-left: 0;
 }
 
 .tech-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.1);
+    z-index: 10;
+    border-color: #64ffda;
     background: rgba(100, 255, 218, 0.1);
 }
 
@@ -829,5 +840,70 @@ button:hover ~ .pointer-effects .pointer-circle,
     60% { transform: translate(2px, 2px) }
     80% { transform: translate(2px, -2px) }
     100% { transform: translate(0) }
+}
+
+/* Add these styles for the animated tooltip */
+.tech-item {
+    position: relative;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.animated-tooltip {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    z-index: 20;
+}
+
+.animated-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.tech-item:hover .animated-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tech-item:hover {
+    transform: scale(1.1);
+}
+
+.tooltip-name {
+    font-weight: bold;
+    color: #64ffda;
+}
+
+.tooltip-designation {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Add hover effect for adjacent items */
+.tech-item:hover + .tech-item {
+    transform: translateX(10px);
 }
   

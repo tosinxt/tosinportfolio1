@@ -1438,6 +1438,60 @@ window.addEventListener('load', () => {
     initTextScramble();
 });
 
+// Add this function to create animated tooltips
+function createAnimatedTooltips() {
+    const techItems = document.querySelectorAll('.tech-item');
+    
+    const techStack = {
+        'React.js': { designation: 'Frontend Framework', experience: '3+ years' },
+        'Vue.js': { designation: 'Frontend Framework', experience: '2+ years' },
+        'Angular': { designation: 'Frontend Framework', experience: '2+ years' },
+        'TypeScript': { designation: 'Programming Language', experience: '3+ years' },
+        'Next.js': { designation: 'React Framework', experience: '2+ years' },
+        'Node.js': { designation: 'Backend Runtime', experience: '4+ years' },
+        'Python': { designation: 'Programming Language', experience: '3+ years' },
+        'Java': { designation: 'Programming Language', experience: '3+ years' },
+        'Go': { designation: 'Programming Language', experience: '2+ years' },
+        'Ruby': { designation: 'Programming Language', experience: '2+ years' },
+        'MongoDB': { designation: 'NoSQL Database', experience: '3+ years' },
+        'PostgreSQL': { designation: 'SQL Database', experience: '4+ years' },
+        'Redis': { designation: 'In-Memory Database', experience: '2+ years' },
+        'MySQL': { designation: 'SQL Database', experience: '3+ years' },
+        'Docker': { designation: 'Containerization', experience: '3+ years' },
+        'AWS': { designation: 'Cloud Platform', experience: '3+ years' },
+        'Kubernetes': { designation: 'Container Orchestration', experience: '2+ years' },
+        'Jenkins': { designation: 'CI/CD Tool', experience: '2+ years' },
+        'Azure': { designation: 'Cloud Platform', experience: '2+ years' },
+        'Git': { designation: 'Version Control', experience: '4+ years' },
+        'GraphQL': { designation: 'Query Language', experience: '2+ years' },
+        'Webpack': { designation: 'Module Bundler', experience: '3+ years' },
+        'Jest': { designation: 'Testing Framework', experience: '2+ years' }
+    };
+
+    techItems.forEach(item => {
+        const techName = item.getAttribute('data-tooltip');
+        const techInfo = techStack[techName];
+        
+        if (techInfo) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'animated-tooltip';
+            tooltip.innerHTML = `
+                <span class="tooltip-name">${techName}</span>
+                <span class="tooltip-designation">${techInfo.designation}</span>
+                <span class="tooltip-experience">${techInfo.experience}</span>
+            `;
+            
+            item.appendChild(tooltip);
+        }
+    });
+}
+
+// Add this to your window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    createAnimatedTooltips();
+});
+
 
 
 
