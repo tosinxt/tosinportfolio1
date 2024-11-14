@@ -1383,53 +1383,32 @@ class TextScramble {
 
 // Initialize text scramble effect
 function initTextScramble() {
-    const nameElement = document.querySelector('.hero h1');
+    const nameElement = document.querySelector('.hero-title');
+    if (!nameElement) return; // Exit if element not found
+    
     const scrambler = new TextScramble(nameElement);
     let isScrambling = false;
 
-    // Hover effect
-    nameElement.addEventListener('mouseenter', () => {
-        if (!isScrambling) {
-            isScrambling = true;
-            scrambler.setText('OLUWATOSIN ALLI').then(() => {
-                isScrambling = false;
-            });
-        }
-    });
-
-    nameElement.addEventListener('mouseleave', () => {
-        if (!isScrambling) {
-            isScrambling = true;
-            scrambler.setText(scrambler.originalText).then(() => {
-                isScrambling = false;
-            });
-        }
-    });
-
-    // Scroll effect
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-        const st = window.pageYOffset || document.documentElement.scrollTop;
-        const heroSection = document.querySelector('.hero');
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        
-        if (!isScrambling) {
-            if (st > lastScrollTop && st < heroBottom) {
-                // Scrolling down
+    // Only add hover effect if not on mobile
+    if (window.innerWidth > 768) {
+        nameElement.addEventListener('mouseenter', () => {
+            if (!isScrambling) {
                 isScrambling = true;
-                scrambler.setText('01001010101').then(() => {
+                scrambler.setText('OLUWATOSIN ALLI').then(() => {
                     isScrambling = false;
                 });
-            } else if (st < lastScrollTop && st < heroBottom) {
-                // Scrolling up
+            }
+        });
+
+        nameElement.addEventListener('mouseleave', () => {
+            if (!isScrambling) {
                 isScrambling = true;
                 scrambler.setText(scrambler.originalText).then(() => {
                     isScrambling = false;
                 });
             }
-        }
-        lastScrollTop = st <= 0 ? 0 : st;
-    }, false);
+        });
+    }
 }
 
 // Add this to your window load event
@@ -1596,6 +1575,67 @@ function initTiltEffect() {
 window.addEventListener('load', () => {
     // ... existing load event code ...
     initTiltEffect();
+});
+
+// Add this to handle mobile menu
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+        if (!menuOpen) {
+            menuBtn.classList.add('open');
+            mobileMenu.classList.add('open');
+            menuOpen = true;
+        } else {
+            menuBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            menuOpen = false;
+        }
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-menu .nav-list a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            menuOpen = false;
+        });
+    });
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    initMobileMenu();
+});
+
+// Add this function for scroll animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll animation classes
+    document.querySelectorAll('.scroll-fade-up, .scroll-fade-right, .scroll-scale').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    initScrollAnimations();
 });
 
 

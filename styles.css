@@ -1481,4 +1481,193 @@ button:hover ~ .pointer-effects .pointer-circle,
 .fact-card:hover::after {
     opacity: 0.1;
 }
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    transition: right 0.3s ease;
+    padding: 80px 20px 20px;
+    border-left: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-menu .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-menu .nav-list a {
+    font-size: 1.5rem;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu .nav-list a:hover {
+    background: rgba(100, 255, 218, 0.1);
+}
+
+/* Menu Button Styles */
+.menu-btn {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+}
+
+.menu-btn__burger,
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    width: 30px;
+    height: 2px;
+    background: #64ffda;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.menu-btn__burger {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-btn__burger::before {
+    content: '';
+    top: -8px;
+}
+
+.menu-btn__burger::after {
+    content: '';
+    top: 8px;
+}
+
+.menu-btn.open .menu-btn__burger {
+    background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+    transform: translate(-50%, 8px) rotate(45deg);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+    transform: translate(-50%, -8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+    
+    .nav-list {
+        display: none;
+    }
+}
+
+/* Add these scroll animation styles */
+.scroll-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.scroll-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-fade-right {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s ease;
+}
+
+.scroll-fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease;
+}
+
+.scroll-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Add stagger delay classes */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Update these mobile styles */
+@media (max-width: 768px) {
+    /* Fix about page padding */
+    .about-page {
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Adjust header spacing */
+    .about-header {
+        margin-bottom: 30px;
+        padding-top: 20px;
+    }
+
+    /* Make content visible */
+    .main-container {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Adjust background */
+    .hero-background {
+        opacity: 0.3;
+    }
+
+    /* Fix fact cards on mobile */
+    .fact-card {
+        padding: 15px;
+        height: auto;
+        min-height: 200px;
+    }
+
+    /* Adjust journey cards */
+    .journey-card {
+        height: auto;
+        min-height: 200px;
+    }
+
+    /* Fix achievement cards */
+    .achievement-card {
+        margin-bottom: 15px;
+    }
+
+    /* Ensure text is readable */
+    .about-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #fff;
+    }
+}
   
