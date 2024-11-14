@@ -1422,29 +1422,48 @@ function createAnimatedTooltips() {
     const techItems = document.querySelectorAll('.tech-item');
     
     const techStack = {
-        'React.js': { designation: 'Frontend Framework', experience: '3+ years' },
-        'Vue.js': { designation: 'Frontend Framework', experience: '2+ years' },
-        'Angular': { designation: 'Frontend Framework', experience: '2+ years' },
-        'TypeScript': { designation: 'Programming Language', experience: '3+ years' },
-        'Next.js': { designation: 'React Framework', experience: '2+ years' },
-        'Node.js': { designation: 'Backend Runtime', experience: '4+ years' },
-        'Python': { designation: 'Programming Language', experience: '3+ years' },
-        'Java': { designation: 'Programming Language', experience: '3+ years' },
-        'Go': { designation: 'Programming Language', experience: '2+ years' },
-        'Ruby': { designation: 'Programming Language', experience: '2+ years' },
-        'MongoDB': { designation: 'NoSQL Database', experience: '3+ years' },
-        'PostgreSQL': { designation: 'SQL Database', experience: '4+ years' },
-        'Redis': { designation: 'In-Memory Database', experience: '2+ years' },
-        'MySQL': { designation: 'SQL Database', experience: '3+ years' },
-        'Docker': { designation: 'Containerization', experience: '3+ years' },
-        'AWS': { designation: 'Cloud Platform', experience: '3+ years' },
-        'Kubernetes': { designation: 'Container Orchestration', experience: '2+ years' },
-        'Jenkins': { designation: 'CI/CD Tool', experience: '2+ years' },
-        'Azure': { designation: 'Cloud Platform', experience: '2+ years' },
-        'Git': { designation: 'Version Control', experience: '4+ years' },
-        'GraphQL': { designation: 'Query Language', experience: '2+ years' },
-        'Webpack': { designation: 'Module Bundler', experience: '3+ years' },
-        'Jest': { designation: 'Testing Framework', experience: '2+ years' }
+        'React.js': { 
+            designation: 'Frontend Framework', 
+            experience: '2+ years',
+            proficiency: 85,
+            projects: 12,
+            expertise: ['Hooks', 'Redux', 'Next.js', 'Context API']
+        },
+        'Vue.js': { 
+            designation: 'Frontend Framework', 
+            experience: '1+ year',
+            proficiency: 75,
+            projects: 8,
+            expertise: ['Vuex', 'Vue Router', 'Composition API']
+        },
+        'TypeScript': { 
+            designation: 'Programming Language', 
+            experience: '2+ years',
+            proficiency: 90,
+            projects: 15,
+            expertise: ['Type Systems', 'Generics', 'Decorators']
+        },
+        'Node.js': { 
+            designation: 'Backend Runtime', 
+            experience: '3+ years',
+            proficiency: 95,
+            projects: 20,
+            expertise: ['Express', 'NestJS', 'Microservices']
+        },
+        'Python': { 
+            designation: 'Programming Language', 
+            experience: '2+ years',
+            proficiency: 88,
+            projects: 10,
+            expertise: ['Django', 'FastAPI', 'Data Science']
+        },
+        'Go': { 
+            designation: 'Programming Language', 
+            experience: '1+ year',
+            proficiency: 70,
+            projects: 5,
+            expertise: ['Goroutines', 'Channels', 'Web Services']
+        }
     };
 
     techItems.forEach(item => {
@@ -1636,6 +1655,38 @@ function initScrollAnimations() {
 window.addEventListener('load', () => {
     // ... existing load event code ...
     initScrollAnimations();
+});
+
+// Add this function to animate skill bars
+function initSkillBars() {
+    const proficiencyCards = document.querySelectorAll('.proficiency-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                const skillLevel = card.dataset.level;
+                const skillFill = card.querySelector('.skill-fill');
+                
+                // Set the width based on skill level
+                skillFill.style.transform = `scaleX(${skillLevel / 100})`;
+                card.classList.add('animate');
+                
+                // Stop observing after animation
+                observer.unobserve(card);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    proficiencyCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    initSkillBars();
 });
 
 

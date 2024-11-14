@@ -10,66 +10,143 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Include preloader and navigation -->
+    <!-- Preloader -->
     <div class="preloader">
-        <!-- ... preloader content ... -->
+        <div class="loader">
+            <div class="loader-text">Loading</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
     </div>
     
+    <!-- Navigation -->
     <nav class="nav-container">
-        <!-- ... navigation content ... -->
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html">OA</a>
+            </div>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Matrix Rain Background -->
+    <div class="hero-background full-page">
+        <canvas id="matrix-rain"></canvas>
+        <div class="gradient-sphere"></div>
+        <div class="grid-overlay"></div>
+    </div>
 
     <div class="main-container">
         <section class="section contact-page">
-            <h1 class="section-title">Get in Touch</h1>
+            <h1 class="section-title scroll-fade-up">Get in Touch</h1>
             
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
+                    <div class="contact-card scroll-fade-right delay-1">
+                        <i class="fas fa-envelope glow-icon"></i>
                         <h3>Email</h3>
-                        <a href="mailto:email@example.com">email@example.com</a>
+                        <p>For Professional Inquiries</p>
+                        <a href="mailto:allioluwatosin8@gmail.com" class="themed-link">
+                            <span class="link-text">allioluwatosin8@gmail.com</span>
+                            <span class="link-hover-effect"></span>
+                        </a>
                     </div>
-                    <div class="contact-card">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <a href="https://linkedin.com/in/oluwatosinalli">Connect on LinkedIn</a>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fab fa-github"></i>
+                    <div class="contact-card scroll-fade-right delay-2">
+                        <i class="fab fa-github glow-icon"></i>
                         <h3>GitHub</h3>
-                        <a href="https://github.com/oluwatosinalli">View Projects</a>
+                        <p>Code & Projects</p>
+                        <a href="https://github.com/tosinxt" target="_blank" class="themed-link">
+                            <span class="link-text">View Projects</span>
+                            <span class="link-hover-effect"></span>
+                        </a>
+                    </div>
+                    <div class="contact-card scroll-fade-right delay-3">
+                        <i class="fab fa-twitter glow-icon"></i>
+                        <h3>Twitter</h3>
+                        <p>Tech Updates & Thoughts</p>
+                        <a href="https://twitter.com/tosinxt" target="_blank" class="themed-link">
+                            <span class="link-text">Follow Me</span>
+                            <span class="link-hover-effect"></span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact-form scroll-fade-up">
+                    <h2>Send a Message</h2>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required 
+                                   placeholder="Enter your name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required 
+                                   placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required 
+                                   placeholder="What's this about?">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <textarea id="message" name="message" required 
+                                      placeholder="Your message here..."></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
+                </div>
+            </div>
+
+            <div class="contact-footer scroll-fade-up">
+                <h3>Other Ways to Connect</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-medium"></i>
+                        <span>Medium</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-dev"></i>
+                        <span>Dev.to</span>
+                    </a>
                 </div>
             </div>
         </section>
     </div>
 
     <footer class="footer">
-        <!-- ... footer content ... -->
+        <p>© 2024 Oluwatosin Alli. Built with 💻</p>
     </footer>
 
-    <!-- Include cursor and effects -->
+    <!-- Cursor and effects -->
     <div class="cursor"></div>
-    <div class="ripple-container"></div>
     <div class="pointer-effects">
         <div class="pointer-circle"></div>
         <div class="pointer-dot"></div>

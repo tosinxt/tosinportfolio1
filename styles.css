@@ -1670,4 +1670,240 @@ button:hover ~ .pointer-effects .pointer-circle,
         color: #fff;
     }
 }
+
+/* Add styles for section footer */
+.section-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.section-footer .cta-button {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* Proficiency Cards Styles */
+.proficiency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.proficiency-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.proficiency-card:hover {
+    transform: translateY(-5px);
+    border-color: #64ffda;
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.skill-header i {
+    font-size: 2rem;
+    color: #64ffda;
+}
+
+.skill-header h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.skill-bar-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    background: #64ffda;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.5s cubic-bezier(0.17, 0.67, 0.24, 0.99);
+}
+
+.skill-percentage {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: #64ffda;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.skill-details {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-details p {
+    margin: 5px 0;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.skill-tags span {
+    background: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* Animation classes */
+.proficiency-card.animate .skill-fill {
+    transform: scaleX(1);
+}
+
+.proficiency-card.animate .skill-percentage {
+    opacity: 1;
+}
+
+/* Update background styles */
+.hero-background.full-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Ensure content is above background */
+.main-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Add subtle gradient overlay for better readability */
+.about-page {
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.8),
+        rgba(10, 10, 10, 0.6)
+    );
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Adjust opacity for better visibility */
+#matrix-rain {
+    opacity: 0.2;
+}
+
+/* Themed Link Styles */
+.themed-link {
+    position: relative;
+    color: #64ffda;
+    text-decoration: none;
+    padding: 5px 0;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.link-text {
+    position: relative;
+    z-index: 1;
+}
+
+.link-hover-effect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #64ffda;
+    transition: width 0.3s ease;
+}
+
+.themed-link:hover .link-hover-effect {
+    width: 100%;
+}
+
+.themed-link:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+}
+
+/* Glowing Icon Effect */
+.glow-icon {
+    color: #64ffda;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .glow-icon {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.8);
+}
+
+/* Update contact card styles */
+.contact-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: #64ffda;
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+.contact-card h3 {
+    color: #fff;
+    margin: 10px 0;
+}
+
+.contact-card p {
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.contact-card a {
+    color: #64ffda;
+}
+
+.contact-card:hover a {
+    color: #64ffda;
+}
   
