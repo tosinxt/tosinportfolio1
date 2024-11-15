@@ -1689,6 +1689,37 @@ window.addEventListener('load', () => {
     initSkillBars();
 });
 
+// Add this to handle theme switching
+function initThemeToggle() {
+    const darkModeToggle = document.querySelector('#darkMode');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'light') {
+            darkModeToggle.checked = true;
+        }
+    }
+    
+    // Handle theme toggle
+    darkModeToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+}
+
+// Add to window load event
+window.addEventListener('load', () => {
+    // ... existing load event code ...
+    initThemeToggle();
+});
+
 
 
 

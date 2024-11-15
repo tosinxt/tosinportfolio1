@@ -1495,6 +1495,10 @@ button:hover ~ .pointer-effects .pointer-circle,
     transition: right 0.3s ease;
     padding: 80px 20px 20px;
     border-left: 1px solid rgba(100, 255, 218, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
 }
 
 .mobile-menu.open {
@@ -1518,6 +1522,17 @@ button:hover ~ .pointer-effects .pointer-circle,
 
 .mobile-menu .nav-list a:hover {
     background: rgba(100, 255, 218, 0.1);
+}
+
+.mobile-menu .theme-toggle {
+    margin: 20px auto;
+}
+
+/* Hide theme toggle in nav on mobile */
+@media (max-width: 768px) {
+    .nav-content .theme-toggle {
+        display: none;
+    }
 }
 
 /* Menu Button Styles */
@@ -1905,5 +1920,324 @@ button:hover ~ .pointer-effects .pointer-circle,
 
 .contact-card:hover a {
     color: #64ffda;
+}
+
+/* Dark Mode Toggle Styles */
+.theme-toggle {
+    margin-left: 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.dark-mode-input {
+    opacity: 0;
+    position: absolute;
+}
+
+.dark-mode-label {
+    background: linear-gradient(45deg, #64ffda, #1a1a1a);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1);
+}
+
+.dark-mode-label .fa-sun {
+    color: #f39c12;
+}
+
+.dark-mode-label .fa-moon {
+    color: #f1c40f;
+}
+
+.dark-mode-label i {
+    font-size: 14px;
+}
+
+.toggle-ball {
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+}
+
+.dark-mode-input:checked + .dark-mode-label .toggle-ball {
+    transform: translateX(24px);
+}
+
+/* Dark Mode Colors */
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --accent-color: #64ffda;
+    --secondary-text: #888;
+    --card-border: rgba(100, 255, 218, 0.1);
+    --card-hover-shadow: rgba(100, 255, 218, 0.1);
+    --nav-bg: rgba(10, 10, 10, 0.95);
+    --matrix-opacity: 0.15;
+}
+
+[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --text-color: #0a0a0a;  /* Darker main text */
+    --secondary-text: #333333;  /* Darker secondary text */
+    --card-bg: #ffffff;
+    --accent-color: #2d8678;
+    --card-border: rgba(45, 134, 120, 0.2);
+    --card-hover-shadow: rgba(45, 134, 120, 0.2);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --matrix-opacity: 0.08;
+}
+
+/* Update existing styles to use CSS variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.skill-card, .project-card, .contact-card, .fact-card, .journey-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+}
+
+.nav-container {
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+}
+
+.nav-list a {
+    color: var(--text-color);
+}
+
+.nav-list a:hover {
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    color: var(--secondary-text);
+}
+
+.project-description {
+    color: var(--secondary-text);
+}
+
+.tech-tag {
+    background: rgba(var(--accent-color), 0.1);
+    color: var(--accent-color);
+}
+
+.contact-card p {
+    color: var(--secondary-text);
+}
+
+.contact-card a {
+    color: var(--accent-color);
+}
+
+#matrix-rain {
+    opacity: var(--matrix-opacity);
+}
+
+/* Form elements in light mode */
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+/* Timeline and cards in light mode */
+[data-theme="light"] .timeline-item {
+    border-left-color: rgba(0, 184, 148, 0.2);
+}
+
+[data-theme="light"] .timeline-item:hover {
+    border-left-color: var(--accent-color);
+}
+
+[data-theme="light"] .timeline-date {
+    color: var(--accent-color);
+}
+
+/* Skill bars in light mode */
+[data-theme="light"] .skill-bar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .skill-fill {
+    background: var(--accent-color);
+}
+
+/* Mobile menu in light mode */
+[data-theme="light"] .mobile-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Update gradient and overlay effects */
+[data-theme="light"] .about-page {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.6)
+    );
+}
+
+/* Update button styles */
+[data-theme="light"] .cta-button {
+    background: var(--accent-color);
+    color: white;
+}
+
+[data-theme="light"] .cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Update icons and glowing effects */
+[data-theme="light"] .glow-icon {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .contact-card:hover .glow-icon {
+    text-shadow: 0 0 20px rgba(0, 184, 148, 0.8);
+}
+
+/* Update tooltips */
+[data-theme="light"] .tech-item::before {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Update scroll animations */
+[data-theme="light"] .scroll-fade-up,
+[data-theme="light"] .scroll-fade-right,
+[data-theme="light"] .scroll-scale {
+    opacity: 0;
+}
+
+[data-theme="light"] .scroll-fade-up.visible,
+[data-theme="light"] .scroll-fade-right.visible,
+[data-theme="light"] .scroll-scale.visible {
+    opacity: 1;
+}
+
+/* Update hero section background */
+.hero-background {
+    opacity: 0.8;
+}
+
+[data-theme="light"] .hero-background {
+    opacity: 0.4;
+}
+
+/* Add gradient overlay to hero section */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(var(--bg-color-rgb), 0.7),
+        rgba(var(--accent-color-rgb), 0.1)
+    );
+    z-index: 1;
+}
+
+/* Update card styles for better contrast */
+[data-theme="light"] .skill-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .fact-card,
+[data-theme="light"] .journey-card {
+    background: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Update text colors for better readability */
+[data-theme="light"] .project-description,
+[data-theme="light"] .contact-card p,
+[data-theme="light"] .timeline-item p,
+[data-theme="light"] .fact-list li,
+[data-theme="light"] .skill-details p,
+[data-theme="light"] .hero-subtitle {
+    color: #333333;  /* Darker text for better readability */
+}
+
+/* Update button styles for better contrast */
+[data-theme="light"] .cta-button {
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+[data-theme="light"] .cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Update matrix rain color for light mode */
+[data-theme="light"] #matrix-rain {
+    filter: opacity(0.08) sepia(1) hue-rotate(140deg);
+}
+
+/* Update the color variables for darker text */
+:root {
+    /* Dark mode colors stay the same */
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --secondary-text: #888;
+}
+
+[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --text-color: #0a0a0a;  /* Darker main text */
+    --secondary-text: #333333;  /* Darker secondary text */
+    --card-bg: #ffffff;
+    --accent-color: #2d8678;
+}
+
+/* Update specific text colors for light mode */
+[data-theme="light"] .project-description,
+[data-theme="light"] .contact-card p,
+[data-theme="light"] .timeline-item p,
+[data-theme="light"] .fact-list li,
+[data-theme="light"] .skill-details p,
+[data-theme="light"] .hero-subtitle {
+    color: #333333;  /* Darker text for better readability */
+}
+
+[data-theme="light"] .section-title,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+    color: #0a0a0a;  /* Darkest text for headings */
+}
+
+[data-theme="light"] .contact-card h3,
+[data-theme="light"] .fact-card h3,
+[data-theme="light"] .journey-card h3 {
+    color: #0a0a0a;
+}
+
+[data-theme="light"] .lead {
+    color: #333333;
 }
   
