@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script defer src="script.js"></script>
+    <script defer src="project-previews.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -58,293 +59,310 @@
         <div class="grid-overlay"></div>
     </div>
 
+    <!-- Project Preview Modal -->
+    <div class="project-preview" id="projectPreview">
+        <div class="close-preview" id="closePreview">×</div>
+        <div class="preview-content">
+            <iframe class="preview-iframe" id="previewFrame" src="" title="Project Preview" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+    </div>
+
     <div class="main-container">
         <section class="section projects-page">
-            <h1 class="section-title">My Projects</h1>
+            <h1 class="section-title">Featured Projects</h1>
+            <p class="section-subtitle">Click on any project to preview it in action</p>
             
             <div class="projects-grid detailed">
-                <!-- Project 1 -->
-                <div class="project-card">
+                <!-- Project 1: Allbirds -->
+                <div class="project-card" data-preview-url="https://www.allbirds.com">
                     <div class="project-image">
-                        <img src="project1.jpg" alt="Project 1">
+                        <img src="https://images.unsplash.com/photo-1608667508764-33cf0726b13a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Allbirds E-commerce">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p class="project-description">A full-stack e-commerce platform with microservices architecture, featuring real-time inventory management and payment processing.</p>
+                        <h3>Allbirds E-commerce</h3>
+                        <p class="project-description">A sustainable e-commerce platform for eco-friendly footwear, featuring a clean UI and seamless checkout experience.</p>
                         <div class="project-tech">
+                            <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Stripe</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.allbirds.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
+                <!-- Project 2: Glossier -->
+                <div class="project-card" data-preview-url="https://www.glossier.com">
                     <div class="project-image">
-                        <img src="project2.jpg" alt="Project 2">
+                        <img src="https://images.unsplash.com/photo-1610548822787-8d5c1fa2a9e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Glossier Beauty">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Cloud Infrastructure Manager</h3>
-                        <p class="project-description">An automated cloud infrastructure management system with multi-cloud support and cost optimization features.</p>
+                        <h3>Glossier Beauty</h3>
+                        <p class="project-description">A modern e-commerce platform for beauty products with an engaging user experience and community-driven content.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Shopify</span>
+                            <span class="tech-tag">GraphQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.glossier.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Monzo -->
+                <div class="project-card" data-preview-url="https://monzo.com">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Monzo Banking">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Monzo Banking</h3>
+                        <p class="project-description">A mobile-first banking application with real-time transaction tracking and smart budgeting features.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Go</span>
                             <span class="tech-tag">Kubernetes</span>
-                            <span class="tech-tag">Terraform</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project3.jpg" alt="Project 3">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Real-time Analytics Dashboard</h3>
-                        <p class="project-description">A scalable analytics platform processing millions of events per second with real-time visualization.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Kafka</span>
-                            <span class="tech-tag">Grafana</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project4.jpg" alt="Project 4">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>API Gateway Service</h3>
-                        <p class="project-description">A high-performance API gateway with rate limiting, caching, and authentication features.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">JWT</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project5.jpg" alt="AI Trading Bot">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI Trading Bot</h3>
-                        <p class="project-description">Automated trading system using machine learning algorithms for market prediction and risk management.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project6.jpg" alt="Distributed Cache System">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Distributed Cache System</h3>
-                        <p class="project-description">High-performance distributed caching system with fault tolerance and automatic scaling.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">Redis</span>
                             <span class="tech-tag">gRPC</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Documentation</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://monzo.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 7 -->
-                <div class="project-card">
+                <!-- Project 4: Warby Parker -->
+                <div class="project-card" data-preview-url="https://www.warbyparker.com">
                     <div class="project-image">
-                        <img src="project7.jpg" alt="Blockchain Payment System">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Warby Parker E-commerce">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Blockchain Payment System</h3>
-                        <p class="project-description">Decentralized payment processing system using smart contracts and blockchain technology.</p>
+                        <h3>Warby Parker</h3>
+                        <p class="project-description">An innovative e-commerce platform for eyewear with virtual try-on features and AR capabilities.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Solidity</span>
-                            <span class="tech-tag">Web3.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Three.js</span>
                             <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">WebGL</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.warbyparker.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 8 -->
-                <div class="project-card">
+                <!-- Project 5: Airtable -->
+                <div class="project-card" data-preview-url="https://www.airtable.com">
                     <div class="project-image">
-                        <img src="project8.jpg" alt="Real-time Chat Platform">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Airtable Platform">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Real-time Chat Platform</h3>
-                        <p class="project-description">Scalable chat application with end-to-end encryption and real-time translation.</p>
+                        <h3>Airtable Platform</h3>
+                        <p class="project-description">A flexible database and collaboration platform that combines the simplicity of spreadsheets with the power of a database.</p>
                         <div class="project-tech">
+                            <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">GraphQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.airtable.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Kiva -->
+                <div class="project-card" data-preview-url="https://www.kiva.org">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kiva Microfinance">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Kiva Microfinance</h3>
+                        <p class="project-description">A peer-to-peer lending platform connecting lenders to low-income entrepreneurs and students in over 80 countries.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.kiva.org" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 9 -->
-                <div class="project-card">
+                <!-- Project 7: Code for Africa -->
+                <div class="project-card" data-preview-url="https://codeforafrica.org">
                     <div class="project-image">
-                        <img src="project9.jpg" alt="ML Image Recognition">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Code for Africa">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>ML Image Recognition API</h3>
-                        <p class="project-description">Deep learning-based image recognition service with RESTful API interface.</p>
+                        <h3>Code for Africa</h3>
+                        <p class="project-description">Africa's largest network of civic technology and open data labs, building digital democracy solutions across the continent.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://codeforafrica.org" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Ushahidi -->
+                <div class="project-card" data-preview-url="https://www.ushahidi.com">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ushahidi Platform">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Ushahidi Platform</h3>
+                        <p class="project-description">An open-source platform for crowdsourcing and visualizing data during crises, elections, and human rights monitoring.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Kohana</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">OpenLayers</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.ushahidi.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: BRCK -->
+                <div class="project-card" data-preview-url="https://www.brck.com">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="BRCK Connectivity">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>BRCK Connectivity</h3>
+                        <p class="project-description">Rugged, self-powered WiFi devices providing reliable internet connectivity in emerging markets and challenging environments.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">IoT</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">API Docs</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.brck.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 10 -->
-                <div class="project-card">
+                <!-- Project 10: Webflow -->
+                <div class="project-card" data-preview-url="https://webflow.com">
                     <div class="project-image">
-                        <img src="project10.jpg" alt="IoT Dashboard">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Webflow Website Builder">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>IoT Monitoring Dashboard</h3>
-                        <p class="project-description">Real-time IoT device monitoring system with analytics and alerting capabilities.</p>
+                        <h3>Webflow Platform</h3>
+                        <p class="project-description">A no-code website builder that combines the power of a visual design tool with the flexibility of custom code.</p>
                         <div class="project-tech">
+                            <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MQTT</span>
-                            <span class="tech-tag">InfluxDB</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Web Components</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://webflow.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 11 -->
-                <div class="project-card">
+                <!-- Project 11: Zipline -->
+                <div class="project-card" data-preview-url="https://www.flyzipline.com">
                     <div class="project-image">
-                        <img src="project11.jpg" alt="Data Pipeline">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Zipline Drone Delivery">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Data Pipeline System</h3>
-                        <p class="project-description">Scalable ETL pipeline for processing and analyzing large datasets in real-time.</p>
+                        <h3>Zipline Drone Delivery</h3>
+                        <p class="project-description">Autonomous drone delivery of medical supplies to remote areas, saving lives through instant logistics and healthcare access.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Apache Kafka</span>
-                            <span class="tech-tag">Spark</span>
-                            <span class="tech-tag">Airflow</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">IoT</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Documentation</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.flyzipline.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 12 -->
-                <div class="project-card">
+                <!-- Project 12: M-Pesa -->
+                <div class="project-card" data-preview-url="https://www.safaricom.co.ke/personal/m-pesa">
                     <div class="project-image">
-                        <img src="project12.jpg" alt="Auth Service">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="M-Pesa Mobile Money">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Authentication Service</h3>
-                        <p class="project-description">Secure authentication system with OAuth2, JWT, and multi-factor authentication.</p>
+                        <h3>M-Pesa Platform</h3>
+                        <p class="project-description">Mobile phone-based money transfer and microfinancing service that has revolutionized banking in emerging markets.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">JWT</span>
-                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Oracle DB</span>
+                            <span class="tech-tag">REST API</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">API Docs</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://www.safaricom.co.ke/personal/m-pesa" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 13 -->
-                <div class="project-card">
+                <!-- Project 13: Andela -->
+                <div class="project-card" data-preview-url="https://andela.com">
                     <div class="project-image">
-                        <img src="project13.jpg" alt="CMS">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Andela Platform">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Content Management System</h3>
-                        <p class="project-description">Headless CMS with GraphQL API and real-time content updates.</p>
+                        <h3>Andela Platform</h3>
+                        <p class="project-description">Building distributed engineering teams with Africa's top software developers and connecting them with global companies.</p>
                         <div class="project-tech">
+                            <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">GraphQL</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Kubernetes</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="https://andela.com" target="_blank" class="project-link">Live Site</a>
+                            <a href="#" class="project-link">Case Study</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 14 -->
-                <div class="project-card">
+                <!-- Project 14: GitHub -->
+                <div class="project-card" data-preview-url="https://github.com">
                     <div class="project-image">
-                        <img src="project14.jpg" alt="Load Balancer">
+                        <img src="https://images.unsplash.com/photo-1484417894907-623b3db76b7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="GitHub Platform">
                         <div class="project-overlay"></div>
                     </div>
                     <div class="project-content">
