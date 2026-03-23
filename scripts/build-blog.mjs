@@ -11,6 +11,8 @@ const CONTENT_DIR = path.join(SRC, "content", "blog");
 const BLOG_DIR = path.join(SRC, "blog");
 const LAYOUT_PATH = path.join(BLOG_DIR, "_layout.html");
 const SITE_ORIGIN = "https://tosinxt.com";
+const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/profile.jpg`;
+const PUBLIC_DIR = path.join(SRC, "public");
 
 const md = new MarkdownIt({
   html: false,
@@ -49,6 +51,43 @@ function escapeHtml(s) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function safeJsonLd(obj) {
+  return JSON.stringify(obj).replace(/</g, "\\u003c");
+}
+
+function writeSitemap(posts) {
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+  const lastmodHome = new Date().toISOString().slice(0, 10);
+  const urlRows = [
+    `  <url>
+    <loc>${SITE_ORIGIN}/</loc>
+    <lastmod>${lastmodHome}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>`,
+    `  <url>
+    <loc>${SITE_ORIGIN}/blog/</loc>
+    <lastmod>${lastmodHome}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>`,
+    ...posts.map(
+      (p) => `  <url>
+    <loc>${SITE_ORIGIN}/blog/${encodeURIComponent(p.slug)}/</loc>
+    <lastmod>${p.dateStr}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+    ),
+  ];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlRows.join("\n")}
+</urlset>
+`;
+  fs.writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), xml, "utf8");
 }
 
 function cleanGeneratedBlog() {
@@ -135,6 +174,33 @@ function writePostPages(template, posts) {
     const dir = path.join(BLOG_DIR, post.slug);
     fs.mkdirSync(dir, { recursive: true });
     const canonical = `${SITE_ORIGIN}/blog/${post.slug}/`;
+    const isoDate = `${post.dateStr}T12:00:00.000Z`;
+    const articleMeta = `
+    <meta property="article:published_time" content="${escapeHtml(isoDate)}" />
+    <meta property="article:modified_time" content="${escapeHtml(isoDate)}" />`;
+    const jsonLd = safeJsonLd({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: isoDate,
+      dateModified: isoDate,
+      url: canonical,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonical,
+      },
+      author: {
+        "@type": "Person",
+        name: "Oluwatosin Alli",
+        url: `${SITE_ORIGIN}/`,
+      },
+      publisher: {
+        "@type": "Person",
+        name: "Oluwatosin Alli",
+      },
+      image: DEFAULT_OG_IMAGE,
+    });
     const main = `
     <main class="blog-page__main">
       <article class="blog-article">
@@ -151,7 +217,12 @@ function writePostPages(template, posts) {
       TITLE: escapeHtml(`${post.title} — Blog — Oluwatosin Alli`),
       DESCRIPTION: escapeHtml(post.description),
       CANONICAL: escapeHtml(canonical),
+      OG_TYPE: "article",
+      OG_IMAGE: escapeHtml(DEFAULT_OG_IMAGE),
+      ARTICLE_META: articleMeta,
+      JSON_LD: jsonLd,
       STYLESHEET_HREF: "../../scss/blog.scss",
+      SCRIPT_SRC: "../../js/blog.js",
       MAIN: main,
     });
 
@@ -185,11 +256,35 @@ function writeIndex(template, posts) {
       <ul class="blog-index__list">${items}</ul>
     </main>`;
 
+  const jsonLd = safeJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Blog — Oluwatosin Alli",
+    description: listDesc,
+    url: canonical,
+    publisher: {
+      "@type": "Person",
+      name: "Oluwatosin Alli",
+      url: `${SITE_ORIGIN}/`,
+    },
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `${SITE_ORIGIN}/blog/${p.slug}/`,
+      datePublished: `${p.dateStr}T12:00:00.000Z`,
+    })),
+  });
+
   const html = applyLayout(template, {
     TITLE: escapeHtml("Blog — Oluwatosin Alli"),
     DESCRIPTION: escapeHtml(listDesc),
     CANONICAL: escapeHtml(canonical),
+    OG_TYPE: "website",
+    OG_IMAGE: escapeHtml(DEFAULT_OG_IMAGE),
+    ARTICLE_META: "",
+    JSON_LD: jsonLd,
     STYLESHEET_HREF: "../scss/blog.scss",
+    SCRIPT_SRC: "../js/blog.js",
     MAIN: main,
   });
 
@@ -202,8 +297,9 @@ function main() {
   const posts = loadPosts();
   writeIndex(template, posts);
   writePostPages(template, posts);
+  writeSitemap(posts);
   console.log(
-    `[build-blog] Wrote blog index + ${posts.length} post page(s) under src/blog/`
+    `[build-blog] Wrote blog index + ${posts.length} post page(s), sitemap.xml under src/public/`
   );
 }
 

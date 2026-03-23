@@ -6,10 +6,24 @@
     <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}" />
     <link rel="canonical" href="{{CANONICAL}}" />
-    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Oluwatosin Alli" />
+    <meta property="og:type" content="{{OG_TYPE}}" />
     <meta property="og:url" content="{{CANONICAL}}" />
     <meta property="og:title" content="{{TITLE}}" />
     <meta property="og:description" content="{{DESCRIPTION}}" />
+    <meta property="og:image" content="{{OG_IMAGE}}" />
+    <meta property="og:site_name" content="Oluwatosin Alli" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{CANONICAL}}" />
+    <meta property="twitter:title" content="{{TITLE}}" />
+    <meta property="twitter:description" content="{{DESCRIPTION}}" />
+    <meta property="twitter:image" content="{{OG_IMAGE}}" />
+    {{ARTICLE_META}}
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <script type="application/ld+json">{{JSON_LD}}</script>
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +41,19 @@
         <a href="/" class="blog-page__nav-link">Portfolio</a>
       </nav>
     </header>
+    <span
+      class="blog-page__line blog-page__line--left blog-page__line--intro"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
     {{MAIN}}
+    <span
+      class="blog-page__line blog-page__line--right blog-page__line--prefooter"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
     <footer class="blog-page__footer">
       <div class="blog-page__footer-links">
         <a href="https://twitter.com/tosinxt" target="_blank" rel="noopener noreferrer">Twitter</a>
@@ -36,5 +62,6 @@
       </div>
       <p class="blog-page__footer-copy">© Oluwatosin Alli</p>
     </footer>
+    <script type="module" src="{{SCRIPT_SRC}}"></script>
   </body>
 </html>
