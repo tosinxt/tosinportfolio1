@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{STYLESHEET_HREF}}" />
+  </head>
+  <body class="blog-page">
+    <header class="blog-page__header">
+      <a href="/" class="blog-page__brand">Oluwatosin Alli</a>
+      <nav class="blog-page__nav" aria-label="Blog">
+        <a href="/blog/" class="blog-page__nav-link blog-page__nav-link--active">Blog</a>
+        <a href="/" class="blog-page__nav-link">Portfolio</a>
+      </nav>
+    </header>
+    {{MAIN}}
+    <footer class="blog-page__footer">
+      <div class="blog-page__footer-links">
+        <a href="https://twitter.com/tosinxt" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/tosinxt" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/oluwatosin-alli-01458220b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <p class="blog-page__footer-copy">© Oluwatosin Alli</p>
+    </footer>
+  </body>
+</html>

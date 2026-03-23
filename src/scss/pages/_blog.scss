@@ -1,0 +1,254 @@
+.blog-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 2.4rem;
+  padding-bottom: 4.8rem;
+
+  @include media("<=phone") {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+  max-width: 72rem;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.6rem;
+    margin-bottom: 4.8rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 2px solid $col-boulder;
+    @extend %description-12;
+    text-transform: uppercase;
+  }
+
+  &__brand {
+    color: $col-boulder;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    @media (any-pointer: fine) {
+      &:hover {
+        color: $col-orange;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__nav-link {
+    color: $col-boulder;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    @media (any-pointer: fine) {
+      &:hover {
+        color: $col-orange;
+      }
+    }
+
+    &--active {
+      color: $col-orange;
+    }
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__list-title {
+    @extend %description-32;
+    color: $col-boulder;
+    margin-bottom: 3.2rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  &__footer {
+    margin-top: 6.4rem;
+    padding-top: 2.4rem;
+    border-top: 2px solid $col-boulder;
+    @extend %description-12;
+    color: $col-boulder;
+  }
+
+  &__footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem 2.4rem;
+    margin-bottom: 1.6rem;
+    text-transform: uppercase;
+
+    a {
+      color: $col-boulder;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      @media (any-pointer: fine) {
+        &:hover {
+          color: $col-orange;
+        }
+      }
+    }
+  }
+
+  &__footer-copy {
+    margin: 0;
+    color: $col-gray;
+  }
+}
+
+.blog-index {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    padding: 2.4rem 0;
+    border-top: 2px solid $col-boulder;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  &__link {
+    @extend %description-16;
+    display: inline-block;
+    color: $col-boulder;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    transition: color 0.2s;
+
+    @media (any-pointer: fine) {
+      &:hover {
+        color: $col-orange;
+      }
+    }
+  }
+
+  &__time {
+    display: block;
+    @extend %description-12;
+    color: $col-gray;
+    margin-bottom: 0.8rem;
+  }
+
+  &__excerpt {
+    @extend %description-16;
+    color: $col-gray;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 48rem;
+  }
+
+  &__empty {
+    @extend %description-16;
+    color: $col-gray;
+
+    code {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.blog-article {
+  max-width: 48rem;
+
+  &__header {
+    margin-bottom: 2.4rem;
+  }
+
+  &__title {
+    @extend %description-32;
+    color: $col-boulder;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  &__date {
+    @extend %description-12;
+    color: $col-gray;
+  }
+
+  &__body {
+    @extend %description-16;
+    color: $col-gray;
+    line-height: 1.65;
+
+    h2,
+    h3 {
+      @extend %description-16;
+      color: $col-boulder;
+      margin: 2.4rem 0 1rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 1.2rem;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 1.2rem 1.2rem;
+      padding-left: 1.2rem;
+    }
+
+    a {
+      color: $col-orange;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    code {
+      font-size: 0.9em;
+      background: rgba($col-boulder, 0.12);
+      padding: 0.1em 0.35em;
+    }
+
+    pre {
+      margin: 1.6rem 0;
+      padding: 1.2rem;
+      overflow-x: auto;
+      background: rgba($col-boulder, 0.08);
+      border: 1px solid rgba($col-boulder, 0.2);
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  &__back {
+    margin: 4rem 0 0;
+    @extend %description-12;
+    text-transform: uppercase;
+
+    a {
+      color: $col-boulder;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      @media (any-pointer: fine) {
+        &:hover {
+          color: $col-orange;
+        }
+      }
+    }
+  }
+}
