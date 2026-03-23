@@ -3,22 +3,27 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { copyText } from "./utils/index";
 import { mapEach } from "./utils/dom";
-// import Home from "./pages/home";
 import Time from "./components/Time";
+import { renderPortfolioProjects } from "./renderProjects";
+
+renderPortfolioProjects();
+
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
 const toContactButtons = document.querySelectorAll(".contact-scroll");
 const footer = document.getElementById("js-footer");
 const scrollEl = document.querySelector("[data-scroll-container]");
-const emailButton = document.querySelector("button.email");
+const emailButton = document.querySelector("a.email");
 const toCopyText = document.querySelector(".to-copy span");
-// const body = document.body;
-const time = new Time();
+new Time();
 
 gsap.registerPlugin(ScrollTrigger);
 
 const scroll = new LocomotiveScroll({
   el: scrollEl,
-  smooth: true,
+  smooth: !prefersReducedMotion,
   lerp: 0.06,
   tablet: {
     breakpoint: 768,
@@ -51,9 +56,13 @@ ScrollTrigger.scrollerProxy(scroll.el, {
 export default class Home {
   constructor(scroll) {
     this.locomotive = scroll;
-    this.heroTextAnimation();
-    this.homeIntro();
-    this.homeAnimations();
+    if (prefersReducedMotion) {
+      gsap.set(scrollEl, { autoAlpha: 1 });
+    } else {
+      this.heroTextAnimation();
+      this.homeIntro();
+      this.homeAnimations();
+    }
     this.homeActions();
   }
 
@@ -64,14 +73,17 @@ export default class Home {
       };
     });
 
-    emailButton.addEventListener("click", (e) => {
-      copyText(e);
-      toCopyText.textContent = "copied";
+    if (emailButton && toCopyText) {
+      emailButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        copyText({ target: emailButton });
+        toCopyText.textContent = "copied";
 
-      setTimeout(() => {
-        toCopyText.textContent = "Click To Copy";
-      }, 2000);
-    });
+        setTimeout(() => {
+          toCopyText.textContent = "CLICK TO COPY";
+        }, 2000);
+      });
+    }
   }
 
   homeIntro() {

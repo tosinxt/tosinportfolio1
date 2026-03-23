@@ -346,6 +346,47 @@
     }
   }
 
+  &__experience {
+    @extend %padding-home;
+    max-width: 113rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 9.6rem;
+    padding-bottom: 4.8rem;
+
+    @include media(">tablet") {
+      padding-top: 16rem;
+      padding-bottom: 8rem;
+    }
+
+    .experience__title {
+      @extend %description-12;
+      color: $col-boulder;
+      margin-bottom: 2.4rem;
+      text-transform: uppercase;
+    }
+
+    &__list {
+      max-width: 55.5rem;
+    }
+
+    .experience__item {
+      @extend %description-16;
+      padding: 1.6rem 0;
+      border-top: 2px solid $col-boulder;
+    }
+
+    .experience__meta {
+      margin: 0 0 0.8rem;
+    }
+
+    .experience__detail {
+      margin: 0;
+      color: $col-gray;
+      line-height: 1.5;
+    }
+  }
+
   &__awards {
     @extend %padding-home;
     @extend %links;
@@ -354,12 +395,12 @@
     max-width: 113rem;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 9.6rem;
+    padding-top: 4.8rem;
     padding-bottom: 9.6rem;
 
     @include media(">tablet") {
       display: flex;
-      padding-top: 24rem;
+      padding-top: 16rem;
       padding-bottom: 24rem;
     }
 
