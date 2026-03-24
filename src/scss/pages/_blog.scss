@@ -97,9 +97,27 @@
   &__list-title {
     @extend %description-32;
     color: $col-boulder;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.6rem;
     text-transform: uppercase;
     letter-spacing: -0.02em;
+  }
+
+  &__intro {
+    font-family: $font-sauce, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 52rem;
+    margin: 0 0 3.2rem;
+
+    @include media("<=tablet") {
+      font-size: 1.8rem;
+    }
+
+    @include media("<=phone") {
+      font-size: 16px;
+    }
   }
 
   &__footer {
@@ -177,11 +195,21 @@
   }
 
   &__excerpt {
-    @extend %description-16;
-    color: $col-gray;
-    margin: 0;
-    line-height: 1.5;
-    max-width: 48rem;
+    font-family: $font-sauce, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0.4rem 0 0;
+    line-height: 1.55;
+    max-width: 52rem;
+
+    @include media("<=tablet") {
+      font-size: 1.7rem;
+    }
+
+    @include media("<=phone") {
+      font-size: 15px;
+    }
   }
 
   &__empty {
@@ -199,6 +227,24 @@
 
   &__header {
     margin-bottom: 2.4rem;
+  }
+
+  &__lede {
+    font-family: $font-sauce, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 1.6rem 0 0;
+    max-width: 52rem;
+
+    @include media("<=tablet") {
+      font-size: 1.8rem;
+    }
+
+    @include media("<=phone") {
+      font-size: 16px;
+    }
   }
 
   &__title {

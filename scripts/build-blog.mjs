@@ -207,6 +207,7 @@ function writePostPages(template, posts) {
         <header class="blog-article__header">
           <h1 class="blog-article__title">${escapeHtml(post.title)}</h1>
           <time class="blog-article__date" datetime="${escapeHtml(post.dateStr)}">${escapeHtml(post.dateStr)}</time>
+          <p class="blog-article__lede">${escapeHtml(post.description)}</p>
         </header>
         <div class="blog-article__body">${post.htmlBody}</div>
         <p class="blog-article__back"><a href="/blog/">← All posts</a></p>
@@ -253,6 +254,7 @@ function writeIndex(template, posts) {
     </main>`
       : `<main class="blog-page__main">
       <h1 class="blog-page__list-title">Blog</h1>
+      <p class="blog-page__intro">${escapeHtml(listDesc)}</p>
       <ul class="blog-index__list">${items}</ul>
     </main>`;
 

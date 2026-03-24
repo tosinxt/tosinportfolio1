@@ -81,12 +81,12 @@ function init() {
   }
 
   tl.from(
-    ".blog-page__list-title, .blog-article__header, .blog-index__empty",
+    ".blog-page__list-title, .blog-page__intro, .blog-article__header, .blog-index__empty",
     {
       duration: 0.9,
       yPercent: 80,
       opacity: 0,
-      stagger: 0.05,
+      stagger: 0.06,
     },
     "-=0.45"
   );
@@ -96,29 +96,37 @@ function init() {
     const first = listItems.slice(0, 3);
     const rest = listItems.slice(3);
     if (first.length) {
-      tl.from(
+      tl.fromTo(
         first,
+        { opacity: 0, y: 36 },
         {
-          duration: 1.05,
-          yPercent: 48,
-          opacity: 0,
-          stagger: 0.11,
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.12,
+          ease,
+          immediateRender: false,
         },
-        "-=0.4"
+        "-=0.35"
       );
     }
     rest.forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: "top 91%",
-          toggleActions: "play none none none",
-        },
-        duration: 1.3,
-        yPercent: 55,
-        opacity: 0,
-        ease,
-      });
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 91%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
   }
 
