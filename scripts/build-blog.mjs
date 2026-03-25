@@ -154,6 +154,13 @@ function loadPosts() {
       typeof data.description === "string" && data.description.trim()
         ? data.description.trim()
         : content.replace(/[#*`_[\]]/g, "").slice(0, 160).trim() + "…";
+    const subtitle =
+      typeof data.subtitle === "string" && data.subtitle.trim()
+        ? data.subtitle.trim()
+        : "";
+    const tags = Array.isArray(data.tags)
+      ? data.tags.map((t) => String(t).trim()).filter(Boolean)
+      : [];
     const htmlBody = md.render(content);
     posts.push({
       slug,
@@ -161,6 +168,8 @@ function loadPosts() {
       sortTime,
       dateStr,
       description,
+      subtitle,
+      tags,
       htmlBody,
     });
   }
@@ -182,7 +191,9 @@ function writePostPages(template, posts) {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: post.title,
+      alternativeHeadline: post.subtitle || undefined,
       description: post.description,
+      keywords: post.tags?.length ? post.tags : undefined,
       datePublished: isoDate,
       dateModified: isoDate,
       url: canonical,
@@ -201,11 +212,23 @@ function writePostPages(template, posts) {
       },
       image: DEFAULT_OG_IMAGE,
     });
+    const articleTags =
+      post.tags?.length
+        ? `\n${post.tags
+            .slice(0, 8)
+            .map((t) => `    <meta property="article:tag" content="${escapeHtml(t)}" />`)
+            .join("\n")}`
+        : "";
     const main = `
     <main class="blog-page__main">
       <article class="blog-article">
         <header class="blog-article__header">
           <h1 class="blog-article__title">${escapeHtml(post.title)}</h1>
+          ${
+            post.subtitle
+              ? `<p class="blog-article__subtitle">${escapeHtml(post.subtitle)}</p>`
+              : ""
+          }
           <time class="blog-article__date" datetime="${escapeHtml(post.dateStr)}">${escapeHtml(post.dateStr)}</time>
           <p class="blog-article__lede">${escapeHtml(post.description)}</p>
         </header>
@@ -220,7 +243,7 @@ function writePostPages(template, posts) {
       CANONICAL: escapeHtml(canonical),
       OG_TYPE: "article",
       OG_IMAGE: escapeHtml(DEFAULT_OG_IMAGE),
-      ARTICLE_META: articleMeta,
+      ARTICLE_META: articleMeta + articleTags,
       JSON_LD: jsonLd,
       STYLESHEET_HREF: "../../scss/blog.scss",
       SCRIPT_SRC: "../../js/blog.js",
@@ -272,8 +295,10 @@ function writeIndex(template, posts) {
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
+      alternativeHeadline: p.subtitle || undefined,
       url: `${SITE_ORIGIN}/blog/${p.slug}/`,
       datePublished: `${p.dateStr}T12:00:00.000Z`,
+      keywords: p.tags?.length ? p.tags : undefined,
     })),
   });
 
