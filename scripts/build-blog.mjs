@@ -73,6 +73,12 @@ function writeSitemap(posts) {
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>`,
+    `  <url>
+    <loc>${SITE_ORIGIN}/about/</loc>
+    <lastmod>${lastmodHome}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`,
     ...posts.map(
       (p) => `  <url>
     <loc>${SITE_ORIGIN}/blog/${encodeURIComponent(p.slug)}/</loc>
@@ -161,6 +167,17 @@ function loadPosts() {
     const tags = Array.isArray(data.tags)
       ? data.tags.map((t) => String(t).trim()).filter(Boolean)
       : [];
+    const faqs = Array.isArray(data.faqs)
+      ? data.faqs
+          .map((f) => ({
+            q: typeof f?.q === "string" ? f.q.trim() : "",
+            a: typeof f?.a === "string" ? f.a.trim() : "",
+          }))
+          .filter((f) => f.q && f.a)
+      : [];
+    const relatedRaw = Array.isArray(data.related)
+      ? data.related.map((s) => String(s).trim()).filter(Boolean)
+      : [];
     const htmlBody = md.render(content);
     posts.push({
       slug,
@@ -170,6 +187,8 @@ function loadPosts() {
       description,
       subtitle,
       tags,
+      faqs,
+      relatedRaw,
       htmlBody,
     });
   }
@@ -179,6 +198,7 @@ function loadPosts() {
 }
 
 function writePostPages(template, posts) {
+  const bySlug = new Map(posts.map((p) => [p.slug, p]));
   for (const post of posts) {
     const dir = path.join(BLOG_DIR, post.slug);
     fs.mkdirSync(dir, { recursive: true });
@@ -187,9 +207,9 @@ function writePostPages(template, posts) {
     const articleMeta = `
     <meta property="article:published_time" content="${escapeHtml(isoDate)}" />
     <meta property="article:modified_time" content="${escapeHtml(isoDate)}" />`;
-    const jsonLd = safeJsonLd({
-      "@context": "https://schema.org",
+    const blogPostingLd = {
       "@type": "BlogPosting",
+      "@id": `${canonical}#article`,
       headline: post.title,
       alternativeHeadline: post.subtitle || undefined,
       description: post.description,
@@ -211,6 +231,35 @@ function writePostPages(template, posts) {
         name: "Oluwatosin Alli",
       },
       image: DEFAULT_OG_IMAGE,
+    };
+    const faqPageLd = post.faqs?.length
+      ? {
+          "@type": "FAQPage",
+          "@id": `${canonical}#faq`,
+          mainEntity: post.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.a,
+            },
+          })),
+        }
+      : null;
+    const breadcrumbLd = {
+      "@type": "BreadcrumbList",
+      "@id": `${canonical}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_ORIGIN}/blog/` },
+        { "@type": "ListItem", position: 3, name: post.title, item: canonical },
+      ],
+    };
+    const jsonLd = safeJsonLd({
+      "@context": "https://schema.org",
+      "@graph": faqPageLd
+        ? [blogPostingLd, faqPageLd, breadcrumbLd]
+        : [blogPostingLd, breadcrumbLd],
     });
     const articleTags =
       post.tags?.length
@@ -219,9 +268,46 @@ function writePostPages(template, posts) {
             .map((t) => `    <meta property="article:tag" content="${escapeHtml(t)}" />`)
             .join("\n")}`
         : "";
+    const faqHtml = post.faqs?.length
+      ? `
+        <section class="blog-article__faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Quick answers</h2>
+          ${post.faqs
+            .map(
+              (f) => `
+          <div class="blog-article__faq-item">
+            <h3>${escapeHtml(f.q)}</h3>
+            <p>${escapeHtml(f.a)}</p>
+          </div>`
+            )
+            .join("")}
+        </section>`
+      : "";
+    const relatedPosts = (post.relatedRaw || [])
+      .map((s) => bySlug.get(s))
+      .filter(Boolean);
+    const relatedHtml = relatedPosts.length
+      ? `
+        <section class="blog-article__related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Related reading</h2>
+          <ul>
+            ${relatedPosts
+              .map(
+                (r) =>
+                  `<li><a href="/blog/${encodeURIComponent(r.slug)}/">${escapeHtml(r.title)}</a></li>`
+              )
+              .join("")}
+          </ul>
+        </section>`
+      : "";
+    const breadcrumbHtml = `
+      <nav class="blog-article__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>${escapeHtml(post.title)}</span>
+      </nav>`;
     const main = `
     <main class="blog-page__main">
       <article class="blog-article">
+        ${breadcrumbHtml}
         <header class="blog-article__header">
           <h1 class="blog-article__title">${escapeHtml(post.title)}</h1>
           ${
@@ -233,6 +319,8 @@ function writePostPages(template, posts) {
           <p class="blog-article__lede">${escapeHtml(post.description)}</p>
         </header>
         <div class="blog-article__body">${post.htmlBody}</div>
+        ${faqHtml}
+        ${relatedHtml}
         <p class="blog-article__back"><a href="/blog/">← All posts</a></p>
       </article>
     </main>`;

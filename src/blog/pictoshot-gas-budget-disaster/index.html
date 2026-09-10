@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget — Blog — Oluwatosin Alli</title>
+    <meta name="description" content="A minting bug on Pictoshot's NFT marketplace nearly turned a test deploy into a very costly lesson in smart contract economics." />
+    <link rel="canonical" href="https://tosinxt.com/blog/pictoshot-gas-budget-disaster/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Oluwatosin Alli" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tosinxt.com/blog/pictoshot-gas-budget-disaster/" />
+    <meta property="og:title" content="The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget — Blog — Oluwatosin Alli" />
+    <meta property="og:description" content="A minting bug on Pictoshot's NFT marketplace nearly turned a test deploy into a very costly lesson in smart contract economics." />
+    <meta property="og:image" content="https://tosinxt.com/profile.jpg" />
+    <meta property="og:site_name" content="Oluwatosin Alli" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://tosinxt.com/blog/pictoshot-gas-budget-disaster/" />
+    <meta property="twitter:title" content="The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget — Blog — Oluwatosin Alli" />
+    <meta property="twitter:description" content="A minting bug on Pictoshot's NFT marketplace nearly turned a test deploy into a very costly lesson in smart contract economics." />
+    <meta property="twitter:image" content="https://tosinxt.com/profile.jpg" />
+    
+    <meta property="article:published_time" content="2026-05-15T12:00:00.000Z" />
+    <meta property="article:modified_time" content="2026-05-15T12:00:00.000Z" />
+    <meta property="article:tag" content="Blockchain" />
+    <meta property="article:tag" content="Web3" />
+    <meta property="article:tag" content="NFT" />
+    <meta property="article:tag" content="Engineering" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/#article","headline":"The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget","alternativeHeadline":"A blockchain war story with a happy, expensive ending.","description":"A minting bug on Pictoshot's NFT marketplace nearly turned a test deploy into a very costly lesson in smart contract economics.","keywords":["Blockchain","Web3","NFT","Engineering"],"datePublished":"2026-05-15T12:00:00.000Z","dateModified":"2026-05-15T12:00:00.000Z","url":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/","mainEntityOfPage":{"@type":"WebPage","@id":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/"},"author":{"@type":"Person","name":"Oluwatosin Alli","url":"https://tosinxt.com/"},"publisher":{"@type":"Person","name":"Oluwatosin Alli"},"image":"https://tosinxt.com/profile.jpg"},{"@type":"FAQPage","@id":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/#faq","mainEntity":[{"@type":"Question","name":"What is Pictoshot?","acceptedAnswer":{"@type":"Answer","text":"Pictoshot is an NFT marketplace built with smart contracts, where Oluwatosin Alli's team caught and fixed a batch-minting bug before it caused real financial damage on a live network."}},{"@type":"Question","name":"How do you prevent smart contract deploy mistakes?","acceptedAnswer":{"@type":"Answer","text":"Simulate every contract transaction before it touches a live network — dry-run the transaction, diff the expected gas cost against a threshold, and hard-stop on anything resembling a runaway loop."}}]},{"@type":"BreadcrumbList","@id":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tosinxt.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tosinxt.com/blog/"},{"@type":"ListItem","position":3,"name":"The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget","item":"https://tosinxt.com/blog/pictoshot-gas-budget-disaster/"}]}]}</script>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../scss/blog.scss" />
+  </head>
+  <body class="blog-page">
+    <header class="blog-page__header">
+      <a href="/" class="blog-page__brand">Oluwatosin Alli</a>
+      <nav class="blog-page__nav" aria-label="Blog">
+        <a href="/blog/" class="blog-page__nav-link blog-page__nav-link--active">Blog</a>
+        <a href="/about/" class="blog-page__nav-link">About</a>
+        <a href="/" class="blog-page__nav-link">Portfolio</a>
+      </nav>
+    </header>
+    <span
+      class="blog-page__line blog-page__line--left blog-page__line--intro"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
+    
+    <main class="blog-page__main">
+      <article class="blog-article">
+        
+      <nav class="blog-article__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget</span>
+      </nav>
+        <header class="blog-article__header">
+          <h1 class="blog-article__title">The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget</h1>
+          <p class="blog-article__subtitle">A blockchain war story with a happy, expensive ending.</p>
+          <time class="blog-article__date" datetime="2026-05-15">2026-05-15</time>
+          <p class="blog-article__lede">A minting bug on Pictoshot's NFT marketplace nearly turned a test deploy into a very costly lesson in smart contract economics.</p>
+        </header>
+        <div class="blog-article__body"><p>Some bugs are embarrassing. This one was expensive-adjacent, and I still tell it as a party story.</p>
+<p><strong>Pictoshot</strong> is an NFT marketplace, and like every Web3 project I’ve touched, the smart contract layer is where confidence goes to get humbled. We were testing a batch-minting function on a testnet before a real launch — nothing should have been at stake financially. Nothing except my sleep.</p>
+<h2>What actually happened</h2>
+<p>A loop in the minting logic that was supposed to cap batch size at a sane number had an off-by-one condition that, under a specific retry path, could re-trigger the batch instead of just the failed item. On testnet, that’s a funny log message. In a misconfigured staging environment that was, for about eleven minutes, pointed at a network with real gas costs, that’s a very different kind of funny.</p>
+<p>We caught it fast — a monitoring alert on unexpected transaction volume did its job — and killed the deploy key before real damage happened. But “before real damage happened” is doing a lot of work in that sentence, and I’ve never re-read a Solidity loop condition as carefully as I did that week.</p>
+<h2>What changed after</h2>
+<p>Every contract interaction in Pictoshot now runs through a simulation layer before anything touches a live network, testnet or not — dry-run the exact transaction, diff the expected gas cost against a threshold, and hard-stop on anything that smells like a runaway loop. It’s more code. It’s worth every line.</p>
+<h2>The honest takeaway</h2>
+<p>Web3 doesn’t forgive the way a typical web stack does — there’s no “just redeploy the fix,” the chain remembers what you did. That pressure changed how careful I am everywhere, not just on-chain. Some lessons you only really learn with your heart rate elevated.</p>
+</div>
+        
+        <section class="blog-article__faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Quick answers</h2>
+          
+          <div class="blog-article__faq-item">
+            <h3>What is Pictoshot?</h3>
+            <p>Pictoshot is an NFT marketplace built with smart contracts, where Oluwatosin Alli's team caught and fixed a batch-minting bug before it caused real financial damage on a live network.</p>
+          </div>
+          <div class="blog-article__faq-item">
+            <h3>How do you prevent smart contract deploy mistakes?</h3>
+            <p>Simulate every contract transaction before it touches a live network — dry-run the transaction, diff the expected gas cost against a threshold, and hard-stop on anything resembling a runaway loop.</p>
+          </div>
+        </section>
+        
+        <section class="blog-article__related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Related reading</h2>
+          <ul>
+            <li><a href="/blog/memora-problem-with-another-social-app/">Memora and the Problem With 'Just Another Social App'</a></li><li><a href="/blog/zypher-assets-learning-finance/">Why Zypher Assets Made Me Actually Learn Finance</a></li><li><a href="/blog/prayer-before-production/">Prayer Before Production: A Deploy-Day Ritual</a></li>
+          </ul>
+        </section>
+        <p class="blog-article__back"><a href="/blog/">← All posts</a></p>
+      </article>
+    </main>
+    <span
+      class="blog-page__line blog-page__line--right blog-page__line--prefooter"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
+    <footer class="blog-page__footer">
+      <div class="blog-page__footer-links">
+        <a href="https://twitter.com/tosinxt" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/tosinxt" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/oluwatosin-alli-01458220b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <p class="blog-page__footer-copy">© Oluwatosin Alli</p>
+    </footer>
+    <script type="module" src="../../js/blog.js"></script>
+  </body>
+</html>

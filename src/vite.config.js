@@ -33,6 +33,7 @@ export default {
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
+        about: path.resolve(__dirname, "about/index.html"),
         ...collectBlogInputs(),
       },
     },

@@ -17,7 +17,7 @@ It’s ironic, honestly.
 
 As a dev, I’m the one who has to explain the "how" to everyone else, and that technical translation is a heavy lift. But I’m also the guy currently staring at registration forms for a webinar I’m hosting. Am I prepared? Not even close. But my better half—who is honestly the greatest and the only reason I’m even doing this—keeps pushing me to stop hiding behind the code.
 
-### The Grind
+## The Grind
 
 On the technical side, **p2pdex.io** is taking more out of me than I planned. The client keeps pushing for features, and even though they paid for an MVP, my brain won't let me ship anything less than a full enterprise system.
 

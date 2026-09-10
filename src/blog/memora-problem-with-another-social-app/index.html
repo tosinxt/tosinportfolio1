@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memora and the Problem With 'Just Another Social App' — Blog — Oluwatosin Alli</title>
+    <meta name="description" content="Building Memora's real-time social platform meant solving for feed latency and presence before a single feature felt 'next-gen' to anyone." />
+    <link rel="canonical" href="https://tosinxt.com/blog/memora-problem-with-another-social-app/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Oluwatosin Alli" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tosinxt.com/blog/memora-problem-with-another-social-app/" />
+    <meta property="og:title" content="Memora and the Problem With 'Just Another Social App' — Blog — Oluwatosin Alli" />
+    <meta property="og:description" content="Building Memora's real-time social platform meant solving for feed latency and presence before a single feature felt 'next-gen' to anyone." />
+    <meta property="og:image" content="https://tosinxt.com/profile.jpg" />
+    <meta property="og:site_name" content="Oluwatosin Alli" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://tosinxt.com/blog/memora-problem-with-another-social-app/" />
+    <meta property="twitter:title" content="Memora and the Problem With 'Just Another Social App' — Blog — Oluwatosin Alli" />
+    <meta property="twitter:description" content="Building Memora's real-time social platform meant solving for feed latency and presence before a single feature felt 'next-gen' to anyone." />
+    <meta property="twitter:image" content="https://tosinxt.com/profile.jpg" />
+    
+    <meta property="article:published_time" content="2026-05-08T12:00:00.000Z" />
+    <meta property="article:modified_time" content="2026-05-08T12:00:00.000Z" />
+    <meta property="article:tag" content="Engineering" />
+    <meta property="article:tag" content="Real-time" />
+    <meta property="article:tag" content="Product" />
+    <meta property="article:tag" content="React" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://tosinxt.com/blog/memora-problem-with-another-social-app/#article","headline":"Memora and the Problem With 'Just Another Social App'","alternativeHeadline":"Real-time architecture decisions for a platform that had to feel alive from day one.","description":"Building Memora's real-time social platform meant solving for feed latency and presence before a single feature felt 'next-gen' to anyone.","keywords":["Engineering","Real-time","Product","React"],"datePublished":"2026-05-08T12:00:00.000Z","dateModified":"2026-05-08T12:00:00.000Z","url":"https://tosinxt.com/blog/memora-problem-with-another-social-app/","mainEntityOfPage":{"@type":"WebPage","@id":"https://tosinxt.com/blog/memora-problem-with-another-social-app/"},"author":{"@type":"Person","name":"Oluwatosin Alli","url":"https://tosinxt.com/"},"publisher":{"@type":"Person","name":"Oluwatosin Alli"},"image":"https://tosinxt.com/profile.jpg"},{"@type":"FAQPage","@id":"https://tosinxt.com/blog/memora-problem-with-another-social-app/#faq","mainEntity":[{"@type":"Question","name":"What is Memora?","acceptedAnswer":{"@type":"Answer","text":"Memora is a real-time social platform Oluwatosin Alli engineered, focused on a WebSocket-based presence and feed-delivery layer that stays responsive under flaky mobile network conditions."}},{"@type":"Question","name":"What makes a social app feel 'real-time' to users?","acceptedAnswer":{"@type":"Answer","text":"Reliable, low-latency connection handling — reconnect speed and low dropped-message rates — matters more to perceived responsiveness than any front-end feature, since users feel lag even when they can't name the cause."}}]},{"@type":"BreadcrumbList","@id":"https://tosinxt.com/blog/memora-problem-with-another-social-app/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tosinxt.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tosinxt.com/blog/"},{"@type":"ListItem","position":3,"name":"Memora and the Problem With 'Just Another Social App'","item":"https://tosinxt.com/blog/memora-problem-with-another-social-app/"}]}]}</script>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../scss/blog.scss" />
+  </head>
+  <body class="blog-page">
+    <header class="blog-page__header">
+      <a href="/" class="blog-page__brand">Oluwatosin Alli</a>
+      <nav class="blog-page__nav" aria-label="Blog">
+        <a href="/blog/" class="blog-page__nav-link blog-page__nav-link--active">Blog</a>
+        <a href="/about/" class="blog-page__nav-link">About</a>
+        <a href="/" class="blog-page__nav-link">Portfolio</a>
+      </nav>
+    </header>
+    <span
+      class="blog-page__line blog-page__line--left blog-page__line--intro"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
+    
+    <main class="blog-page__main">
+      <article class="blog-article">
+        
+      <nav class="blog-article__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>Memora and the Problem With 'Just Another Social App'</span>
+      </nav>
+        <header class="blog-article__header">
+          <h1 class="blog-article__title">Memora and the Problem With 'Just Another Social App'</h1>
+          <p class="blog-article__subtitle">Real-time architecture decisions for a platform that had to feel alive from day one.</p>
+          <time class="blog-article__date" datetime="2026-05-08">2026-05-08</time>
+          <p class="blog-article__lede">Building Memora's real-time social platform meant solving for feed latency and presence before a single feature felt 'next-gen' to anyone.</p>
+        </header>
+        <div class="blog-article__body"><p>Every pitch for a new social app starts the same way: “it’s like X, but better.” Nobody wants to hear that. The actual differentiator is never the feature list — it’s whether the thing feels alive the first time you open it.</p>
+<p><strong>Memora</strong> is a real-time social platform, and “real-time” is one of those words product decks throw around that engineering has to actually be honest about. Real-time to a user means: my friend’s post shows up now, my notification lands now, the app never feels like it’s catching up to reality.</p>
+<h2>Where the actual work was</h2>
+<p>Not the UI — React components are the easy 20%. The hard 80% was the presence and feed-delivery layer: WebSocket connections that survive flaky mobile networks, a feed ranking system that doesn’t feel stale by the time someone scrolls to it, and a backend that doesn’t fall over when a post suddenly gets attention.</p>
+<p>I made an early call to treat “connection reliability” as a first-class metric, not an afterthought — dashboards tracking reconnect times and dropped-message rates before we tracked almost anything else. It felt paranoid at the time. It paid for itself the first week a spike in traffic hit and nothing quietly broke.</p>
+<h2>The lesson that generalizes</h2>
+<p>“Next-gen” isn’t a marketing word if you actually engineer for the feeling it implies. Users can’t articulate why an app feels responsive versus sluggish, but they absolutely feel it, and they leave over it. Building Memora reinforced something I now treat as a rule on every project: the infrastructure decisions nobody sees are the ones that decide whether anyone sticks around to see the features.</p>
+<p>Ship the feature. But architect for the feeling first.</p>
+</div>
+        
+        <section class="blog-article__faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Quick answers</h2>
+          
+          <div class="blog-article__faq-item">
+            <h3>What is Memora?</h3>
+            <p>Memora is a real-time social platform Oluwatosin Alli engineered, focused on a WebSocket-based presence and feed-delivery layer that stays responsive under flaky mobile network conditions.</p>
+          </div>
+          <div class="blog-article__faq-item">
+            <h3>What makes a social app feel 'real-time' to users?</h3>
+            <p>Reliable, low-latency connection handling — reconnect speed and low dropped-message rates — matters more to perceived responsiveness than any front-end feature, since users feel lag even when they can't name the cause.</p>
+          </div>
+        </section>
+        
+        <section class="blog-article__related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Related reading</h2>
+          <ul>
+            <li><a href="/blog/pictoshot-gas-budget-disaster/">The Night Pictoshot's Smart Contract Almost Ate Our Gas Budget</a></li><li><a href="/blog/dotnet-vs-node-nbu-lessons/">.NET Core vs Node.js: What NBU's School Management System Taught Me About Choosing Stacks</a></li><li><a href="/blog/p2pdex-pdf-pipeline/">Teaching a Machine to Read Receipts: Inside p2pdex.io's PDF Pipeline</a></li>
+          </ul>
+        </section>
+        <p class="blog-article__back"><a href="/blog/">← All posts</a></p>
+      </article>
+    </main>
+    <span
+      class="blog-page__line blog-page__line--right blog-page__line--prefooter"
+      aria-hidden="true"
+    >
+      <span></span>
+    </span>
+    <footer class="blog-page__footer">
+      <div class="blog-page__footer-links">
+        <a href="https://twitter.com/tosinxt" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/tosinxt" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/oluwatosin-alli-01458220b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <p class="blog-page__footer-copy">© Oluwatosin Alli</p>
+    </footer>
+    <script type="module" src="../../js/blog.js"></script>
+  </body>
+</html>

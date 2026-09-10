@@ -1,0 +1,18 @@
+# Oluwatosin Alli
+
+> Senior Full-stack Engineer and Computer Scientist based in Abuja, Nigeria. CEO of Hustlrs Nigeria and Nadiron Technologies. B.Sc. Computer Science (AI Specialization), Babcock University. Builds fintech, healthcare, education, and blockchain systems, and writes about engineering, entrepreneurship, and faith.
+
+Oluwatosin Alli is a Senior Full-stack Engineer and Computer Scientist with nine years of experience, specializing in Node.js, TypeScript, .NET Core, React, blockchain, and cloud-native systems across fintech, healthcare, and social platforms. He is CEO of Hustlrs Nigeria (a task-auction marketplace) and Nadiron Technologies (building products including the AI agent Estelle). He holds an AWS Certified Solutions Architect certification and a MongoDB Certified Developer certification.
+
+## Site
+
+- [Portfolio](https://tosinxt.com/): projects, experience, and contact information.
+- [Blog](https://tosinxt.com/blog/): writing on software engineering, entrepreneurship, building in Nigeria, and Christian faith as it intersects with work.
+- [Sitemap](https://tosinxt.com/sitemap.xml)
+
+## Blog topics
+
+- Engineering deep-dives: TypeScript, Node.js, .NET Core, React, real-time systems, blockchain/Web3, fintech data modeling.
+- Company building: founding and running Hustlrs Nigeria and Nadiron Technologies from Abuja, Nigeria.
+- Faith and work: how Christian faith and habits (Sabbath rest, prayer, daily Bible reading) shape a software engineering career.
+- Product case studies: p2pdex.io, Estelle, Memora, Pictoshot, Zypher Assets, The Manor Restaurant, Doyen Academy, Nigerian British University's school management system.
